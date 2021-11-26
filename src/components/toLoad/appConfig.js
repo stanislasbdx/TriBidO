@@ -1,9 +1,9 @@
 export let appConfig = {
 	// PARAMETRES DE L'APPLICATION
 
-	name: "Base",
-	URL: "www.infographart.com",
-	logoUrl: "https://infographart.com/ressources/logos/IFGA/LogoIFGA.svg",
+	name: "TriBidO",
+	URL: "",
+	logoUrl: "tbo-heart.png",
 
 	transitionOpen: "https://hostcrush.cloud/echange/VueDesignProps/Transitions/Rounded-1-Close.png",
 	transitionOpenLazy: "https://hostcrush.cloud/echange/VueDesignProps/Transitions/Rounded-1-Close_Lazy.png",
