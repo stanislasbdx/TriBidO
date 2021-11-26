@@ -12,25 +12,25 @@ export default new Vuetify({
 		iconfont: 'fa', // https://materialdesignicons.com/cdn/2.0.46/
 	},
 	theme: {
-		dark: true,
+		dark: false,
 		themes: {
 			dark: {
-				primary: '#1976D2',
-				accent: '#FF4081',
-				secondary: '#ffe18d',
-				success: '#4CAF50',
-				info: '#2196F3',
+				primary: '#0077FE',
+				accent: '#FFCAB1',
+				secondary: '#02AAE5',
+				success: '#3AF2A2',
+				info: '#03DDCB',
 				warning: '#FB8C00',
-				error: '#FF5252'
+				error: '#FF6C5C'
 			},
 			light: {
-				primary: '#1976D2',
-				accent: '#e91e63',
-				secondary: '#30b1dc',
-				success: '#4CAF50',
-				info: '#2196F3',
+				primary: '#0077FE',
+				accent: '#FFCAB1',
+				secondary: '#02AAE5',
+				success: '#3AF2A2',
+				info: '#03DDCB',
 				warning: '#FB8C00',
-				error: '#FF5252'
+				error: '#FF6C5C'
 			}
 		}
 	},
