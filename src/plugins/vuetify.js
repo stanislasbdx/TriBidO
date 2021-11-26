@@ -9,7 +9,7 @@ Vue.use(Vuetify);
 export default new Vuetify({
 	treeShake: true,
 	icons: {
-		iconfont: 'mdi', // https://materialdesignicons.com/cdn/2.0.46/
+		iconfont: 'fa', // https://materialdesignicons.com/cdn/2.0.46/
 	},
 	theme: {
 		dark: true,
