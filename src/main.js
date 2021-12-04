@@ -5,10 +5,6 @@ import router from "./router";
 
 import vuetify from './plugins/vuetify';
 
-import Vuex from "vuex";
-Vue.use(Vuex);
-import store from "./store/index";
-
 // IMPORT FIREBASE
 import firebase from "firebase/app";
 import db from "@/components/firebaseInit";
