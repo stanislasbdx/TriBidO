@@ -30,7 +30,6 @@ firebase.auth().onAuthStateChanged(() => {
 	new Vue({
 		vuetify,
 		router,
-		store,
 		render: h => h(App)
 	}).$mount("#app");
 });
