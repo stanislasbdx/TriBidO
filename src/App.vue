@@ -7,22 +7,28 @@
 
 					<v-row class="mt-5">
 						<v-col v-for="item in items" :key="item.name" cols="12" class="my-10" align="center">
-							<v-icon v-if="String($route.path) == item.url" color="primary" large style="cursor: pointer;">
-								{{ item.icon }}
-							</v-icon>
-							<v-icon v-else color="grey" large style="cursor: pointer;" @click="$router.push(item.url)">
-								{{ item.icon }}
-							</v-icon>
+							<template v-if="String($route.path) == item.url">
+								<v-icon color="primary" large style="cursor: pointer;">
+									{{ item.icon }}
+								</v-icon>
 
-							<h5>{{ item.name }}</h5>
+								<h5 class="primary--text">{{ item.name }}</h5>
+							</template>
+							<template v-else>
+								<v-icon color="accent" large style="cursor: pointer;" @click="$router.push(item.url)">
+									{{ item.icon }}
+								</v-icon>
+
+								<h5 class="grey--text">{{ item.name }}</h5>
+							</template>
 						</v-col>
 					</v-row>
 
-					<v-col cols="12" class="my-10" align="center" style="position: absolute; bottom: 0;">
+					<v-col cols="12" class="mt-12 pt-12" align="center">
 						<v-icon v-if="String($route.path) == '/login'" color="primary" large style="cursor: pointer;">
 							far fa-user-circle
 						</v-icon>
-						<v-icon v-else color="grey" large style="cursor: pointer;" @click="$router.push('/login')">
+						<v-icon v-else color="accent" large style="cursor: pointer;" @click="$router.push('/login')">
 							far fa-user-circle
 						</v-icon>
 					</v-col>
@@ -47,11 +53,12 @@
 
 	/* Glassmorphism card effect */
 	.glasscard {
-		backdrop-filter: blur(16px) saturate(180%)!important;
-		-webkit-backdrop-filter: blur(16px) saturate(180%)!important;
-		background-color: rgba(255, 255, 255, 0.50)!important;
-		border-radius: 12px!important;
-		border: 1px solid rgba(209, 213, 219, 0.3)!important;
+		background: rgba( 255, 255, 255, 0.45 )!important;
+		box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )!important;
+		backdrop-filter: blur( 4px )!important;
+		-webkit-backdrop-filter: blur( 4px )!important;
+		border-radius: 10px!important;
+		border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
 	}
 </style>
 
