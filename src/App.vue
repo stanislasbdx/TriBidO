@@ -8,14 +8,14 @@
 					<v-row class="mt-5">
 						<v-col v-for="item in items" :key="item.name" cols="12" class="my-10" align="center">
 							<template v-if="String($route.path) == item.url">
-								<v-icon color="primary" large style="cursor: pointer;">
+								<v-icon color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
 									{{ item.icon }}
 								</v-icon>
 
 								<h5 class="primary--text">{{ item.name }}</h5>
 							</template>
 							<template v-else>
-								<v-icon color="accent" large style="cursor: pointer;" @click="$router.push(item.url)">
+								<v-icon color="accent" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;" @click="$router.push(item.url)">
 									{{ item.icon }}
 								</v-icon>
 
@@ -25,7 +25,7 @@
 					</v-row>
 
 					<v-col cols="12" class="mt-12 pt-12" align="center">
-						<v-icon v-if="String($route.path) == '/login'" color="primary" large style="cursor: pointer;">
+						<v-icon v-if="String($route.path) == '/login'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
 							far fa-user-circle
 						</v-icon>
 						<v-icon v-else color="accent" large style="cursor: pointer;" @click="$router.push('/login')">
