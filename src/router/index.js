@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -34,7 +37,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	next();
+	const isAuthenticated = firebase.auth().currentUser;
+
+	if (to.meta.requiresAuth && !isAuthenticated) {
+		next("/login");
+	} else {
+		next();
+	}
 });
 
 export default router;
