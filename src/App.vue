@@ -69,8 +69,11 @@
 		data: () => ({
 			items: [
 				{ name: 'Accueil', icon: 'fa fa-list-alt', url: '/' },
-				{ name: 'Favoris', icon: 'far fa-heart', url: '/favorites' },
-				{ name: 'Carte', icon: 'far fa-map', url: '/map' },
+				{ name: 'Connexion', icon: 'far fa-map', url: '/login' },
+				{ name: 'Profil', icon: 'far fa-address-card', url: '/profile' },
+				{ name: 'Options', icon: 'fa fa-cog', url: '/options' },
+				{ name: 'Produits', icon: 'fa fa-th', url: '/produits' },
+				{ name: 'Produit', icon: 'far fa-map', url: '/produit' }
 			],
 		}),
 	};
