@@ -7,7 +7,23 @@ const routes = [
 	{
 		path: "/",
 		name: "Home",
-		component: () => import('@/App.vue')
+		component: () => import('@/views/Home.vue')
+	},
+	{
+		path: "/favorites",
+		name: "Favorites",
+		component: () => import('@/views/Home.vue'),
+		meta: {
+			requiresAuth: true
+		}
+	},
+	{
+		path: "/map",
+		name: "Map",
+		component: () => import('@/views/Home.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	}
 ];
 
