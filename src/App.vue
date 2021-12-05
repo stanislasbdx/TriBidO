@@ -2,11 +2,11 @@
 	<v-app class="viewport">
 		<!-- Sidebar -->
 		<div class="sidebar">
-			<div class="scrollbar">
-				<v-img src="tbo-all.png"></v-img>
+			<div class="scrollbar" align="center">
+				<v-img src="tbo-all.png" width="10vw"></v-img>
 
 				<v-row class="mt-5">
-					<v-col v-for="item in items" :key="item.name" cols="12" class="my-3" align="center">
+					<v-col v-for="item in items" :key="item.name" cols="12" class="my-3">
 						<template v-if="String($route.path) == item.url">
 							<v-icon color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
 								{{ item.icon }}
@@ -24,7 +24,7 @@
 					</v-col>
 				</v-row>
 
-				<v-col cols="12" class="mt-12 pt-12" align="center">
+				<v-col cols="12" class="mt-12 pt-12">
 					<v-icon v-if="String($route.path) == '/login'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
 						far fa-user-circle
 					</v-icon>
@@ -141,6 +141,7 @@
 
 	main {
 		background-color: #02aae5;
+
 		background-image: 
 			radial-gradient(at 47% 33%, hsl(211.89, 100%, 50%) 0, transparent 59%), 
 			radial-gradient(at 82% 65%, hsl(19.23, 100%, 85%) 0, transparent 55%);
@@ -152,8 +153,11 @@
 		box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )!important;
 		backdrop-filter: blur( 4px )!important;
 		-webkit-backdrop-filter: blur( 4px )!important;
-		border-radius: 10px!important;
 		border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+	}
+
+	.v-card {
+		border-radius: 10px!important;
 	}
 </style>
 
