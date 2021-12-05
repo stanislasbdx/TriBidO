@@ -36,25 +36,22 @@
 		</div>
 
 		<v-main class="content">
-			<router-view class="router-view"></router-view>
+			<transition name="fade" mode="out-in">
+				<router-view class="router-view"></router-view>
+			</transition>
 		</v-main>
 	</v-app>
 </template>
 
 <style>
-	/* Scrollbar */
-	.scrollbar {
-		height: 100%;
-		width: 12.5vw;
-		overflow-y: hidden;
-		overflow-x: hidden;
+	.fade-enter,
+	.fade-leave-to {
+		opacity: 0;
 	}
 
-	.scrollbar:hover {
-		height: 100%;
-		width: 12.5vw;
-		overflow-y: scroll;
-		overflow-x: hidden;
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: all .15s ease;
 	}
 	
 	/* Scrollbar */
