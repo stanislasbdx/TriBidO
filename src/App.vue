@@ -136,7 +136,12 @@
 		padding: 0 20px 0 20px;
 	}
 
-	main {
+	body, main {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+
 		background-color: #02aae5;
 
 		background-image: 
