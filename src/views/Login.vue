@@ -1,48 +1,47 @@
 <template>
 	<div>
-		<v-col justify="center" align="center" style="background-color: #f3f3f3">
-			<h2>Connexion</h2>
-			<v-text-field v-model="email" label="Email"> </v-text-field>
-			<v-text-field v-model="password" label="Mot de passe">
-			</v-text-field>
+		<v-row>
+			<v-col justify="center" align="center" cols="5">
+				<v-card class="glasscard py-5">
+					<v-card-text class="white--text">
+						<h2>Connexion</h2>
+						<v-text-field v-model="email" label="Email"> </v-text-field>
+						<v-text-field v-model="password" label="Mot de passe">
+						</v-text-field>
 
-			<v-btn @click="login()">Connexion</v-btn>
-			<p>
-				<router-link to="/signup"> Créer un compte </router-link>
-			</p>
-		</v-col>
+						<v-btn @click="login()">Connexion</v-btn>
+					</v-card-text>
+				</v-card>
+			</v-col>
 
-		<v-col justify="center" align="center" style="background-color: #f3f3f3">
-			<h2>Inscription</h2>
-			<v-text-field label="username" type="text" v-model="username"></v-text-field>
-			<v-text-field label="Email" type="email" v-model="email"></v-text-field>
-			<v-row class="align-content-center py-2">
-				<v-col cols="12" lg="6" class="py-0">
-					<v-text-field v-model="password" label="Mot de passe">
-					</v-text-field>
-				</v-col>
-				<v-col cols="12" lg="6" class="py-0">
-					<v-text-field v-model="password2" label="Confirmation de mot de passe">
-					</v-text-field>
-				</v-col>
-			</v-row>
-			<v-container class="py-8">
-				<v-btn @click="signup()">Inscription</v-btn>
-			</v-container>
-			<p>
-				<router-link to="/login"> J'ai un compte </router-link>
-			</p>
-		</v-col>
+			<v-col justify="center" align="center" cols="5">
+				<v-card class="glasscard py-5">
+					<v-card-text class="white--text">
+						<h2>Inscription</h2>
+						<v-text-field label="Pseudo" type="text" v-model="username"></v-text-field>
+						<v-text-field label="Email" type="email" v-model="email"></v-text-field>
+						<v-row class="align-content-center py-2">
+							<v-col cols="12" lg="6" class="py-0">
+								<v-text-field v-model="password" label="Mot de passe">
+								</v-text-field>
+							</v-col>
+							<v-col cols="12" lg="6" class="py-0">
+								<v-text-field v-model="password2" label="Confirmation de mot de passe">
+								</v-text-field>
+							</v-col>
+						</v-row>
+
+						<v-btn @click="signup()">Inscription</v-btn>
+					</v-card-text>
+				</v-card>
+			</v-col>
+		</v-row>
 	</div>
 </template>
 
 <style scoped>
 	h2 {
 		text-align: center;
-	}
-
-	.v-btn {
-		margin: 25px;
 	}
 </style>
 
@@ -54,7 +53,6 @@ export default {
 	data() {
 		return {
 			email: "",
-
 			username: "",
 
 			password: "",
