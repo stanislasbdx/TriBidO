@@ -56,22 +56,41 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
-	.scrollbar::-webkit-scrollbar-track {
+	
+	/* Scrollbar */
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		background-color: #F7F7F7;
+	}
+	::-webkit-scrollbar-track {
 		border-radius: 2px;
 	}
 
-	.scrollbar::-webkit-scrollbar {
+	::-webkit-scrollbar {
 		width: 5px;
 		background-color: #F7F7F7;
 	}
 
-	.scrollbar::-webkit-scrollbar-thumb {
+	::-webkit-scrollbar-thumb {
 		border-radius: 10px;
 		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 		background-color: #BFBFBF;
 	}
-	/** Scrollbar end */
 
+	.scrollbar {
+		height: 100%;
+		width: 12.5vw;
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+
+	.scrollbar:hover {
+		height: 100%;
+		width: 12.5vw;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 
 	/* Sidebar */
 	.sidebar {
