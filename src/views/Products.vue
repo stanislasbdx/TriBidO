@@ -1,5 +1,7 @@
 <template>
 	<div>
+		<Header></Header>
+
 		<v-row>
 			<v-col cols="12" md="9">
 				<v-row>
