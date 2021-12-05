@@ -150,8 +150,8 @@
 				{ name: 'Connexion', icon: 'far fa-map', url: '/login' },
 				{ name: 'Profil', icon: 'far fa-address-card', url: '/profile' },
 				{ name: 'Options', icon: 'fa fa-cog', url: '/options' },
-				{ name: 'Produits', icon: 'fa fa-th', url: '/produits' },
-				{ name: 'Produit', icon: 'far fa-map', url: '/produit' }
+				{ name: 'Produits', icon: 'fa fa-th', url: '/products' },
+				{ name: 'Produit', icon: 'far fa-map', url: '/product' }
 			],
 		}),
 	};
