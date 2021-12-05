@@ -46,7 +46,6 @@
 	.scrollbar {
 		height: 100%;
 		width: 12.5vw;
-		max-width: 190px;
 		overflow-y: hidden;
 		overflow-x: hidden;
 	}
@@ -54,7 +53,6 @@
 	.scrollbar:hover {
 		height: 100%;
 		width: 12.5vw;
-		max-width: 190px;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
