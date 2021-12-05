@@ -13,20 +13,9 @@ const routes = [
 		component: () => import('@/views/Home.vue')
 	},
 	{
-		path: "/favorites",
-		name: "Favorites",
-		component: () => import('@/views/Home.vue'),
-		meta: {
-			requiresAuth: true
-		}
-	},
-	{
-		path: "/map",
-		name: "Map",
-		component: () => import('@/views/Home.vue'),
-		meta: {
-			requiresAuth: true
-		}
+		path: "/login",
+		name: "Login",
+		component: () => import('@/views/Login.vue')
 	}
 ];
 
