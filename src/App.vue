@@ -1,49 +1,127 @@
 <template>
-	<v-app>
-		<v-main>
-			<v-container fluid class="align-start px-0 d-flex flex-row py-0" style="height: 100%">
-				<v-navigation-drawer permanent width="10vw" style="min-width: 10vw;">
-					<v-img src="tbo-all.png"></v-img>
+	<v-app class="viewport">
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<div class="scrollbar">
+				<v-img src="tbo-all.png"></v-img>
 
-					<v-row class="mt-5">
-						<v-col v-for="item in items" :key="item.name" cols="12" class="my-10" align="center">
-							<template v-if="String($route.path) == item.url">
-								<v-icon color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
-									{{ item.icon }}
-								</v-icon>
+				<v-row class="mt-5">
+					<v-col v-for="item in items" :key="item.name" cols="12" class="my-3" align="center">
+						<template v-if="String($route.path) == item.url">
+							<v-icon color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
+								{{ item.icon }}
+							</v-icon>
 
-								<h5 class="primary--text">{{ item.name }}</h5>
-							</template>
-							<template v-else>
-								<v-icon color="accent" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;" @click="$router.push(item.url)">
-									{{ item.icon }}
-								</v-icon>
+							<h5 class="primary--text">{{ item.name }}</h5>
+						</template>
+						<template v-else>
+							<v-icon color="accent" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;" @click="$router.push(item.url)">
+								{{ item.icon }}
+							</v-icon>
 
-								<h5 class="grey--text">{{ item.name }}</h5>
-							</template>
-						</v-col>
-					</v-row>
-
-					<v-col cols="12" class="mt-12 pt-12" align="center">
-						<v-icon v-if="String($route.path) == '/login'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
-							far fa-user-circle
-						</v-icon>
-						<v-icon v-else color="accent" large style="cursor: pointer;" @click="$router.push('/login')">
-							far fa-user-circle
-						</v-icon>
+							<h5 class="grey--text">{{ item.name }}</h5>
+						</template>
 					</v-col>
-				</v-navigation-drawer>
+				</v-row>
 
-				<div class="mx-5 mt-5">
-					<router-view></router-view>
-				</div>
-			</v-container>
+				<v-col cols="12" class="mt-12 pt-12" align="center">
+					<v-icon v-if="String($route.path) == '/login'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
+						far fa-user-circle
+					</v-icon>
+					<v-icon v-else color="accent" large style="cursor: pointer;" @click="$router.push('/login')">
+						far fa-user-circle
+					</v-icon>
+				</v-col>
+			</div>
+		</div>
 
+		<v-main class="content">
+			<router-view class="router-view"></router-view>
 		</v-main>
 	</v-app>
 </template>
 
 <style>
+	/* Scrollbar */
+	.scrollbar {
+		height: 100%;
+		width: 12.5vw;
+		max-width: 190px;
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+
+	.scrollbar:hover {
+		height: 100%;
+		width: 12.5vw;
+		max-width: 190px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	.scrollbar::-webkit-scrollbar-track {
+		border-radius: 2px;
+	}
+
+	.scrollbar::-webkit-scrollbar {
+		width: 5px;
+		background-color: #F7F7F7;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+		background-color: #BFBFBF;
+	}
+	/** Scrollbar end */
+
+
+	/* Sidebar */
+	.sidebar {
+		z-index: 1000;
+		
+		position: fixed;
+		
+		left: 12.5vw;
+
+		width: 12.5vw;
+
+		height: 100%;
+
+		margin-left: -12.5vw;
+
+		overflow-y: auto;
+
+		background-color: #fff;
+
+		-webkit-transition: all 0.1s ease;
+		-moz-transition: all 0.1s ease;
+		-o-transition: all 0.1s ease;
+		transition: all 0.1s ease;
+	}
+	/** Sidebar end */
+	
+	.viewport {
+		padding-left: 12.5vw;
+		-webkit-transition: all 0.1s ease;
+		-moz-transition: all 0.1s ease;
+		-o-transition: all 0.1s ease;
+		transition: all 0.1s ease;
+	}
+
+	.content {
+		width: 100%;
+		position: relative;
+		height: 100vh;
+
+		padding: 0 20px 0 20px;
+		padding-top: 20px;
+	}
+	.router-view {
+		margin-top: 20px;
+
+		padding: 0 20px 0 20px;
+	}
+
 	main {
 		background-color: #02aae5;
 		background-image: 
