@@ -9,6 +9,7 @@
 
 <script>
 export default {
+	name: "Blank",
 	data() {
 		return {
 			
