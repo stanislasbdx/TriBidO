@@ -53,7 +53,7 @@
 	.fade-leave-active {
 		transition: all .15s ease;
 	}
-	
+
 	/* Scrollbar */
 	::-webkit-scrollbar {
 		width: 5px;
@@ -92,9 +92,9 @@
 	/* Sidebar */
 	.sidebar {
 		z-index: 1000;
-		
+
 		position: fixed;
-		
+
 		left: 12.5vw;
 
 		width: 12.5vw;
@@ -113,7 +113,7 @@
 		transition: all 0.1s ease;
 	}
 	/** Sidebar end */
-	
+
 	.viewport {
 		padding-left: 12.5vw;
 		-webkit-transition: all 0.1s ease;
@@ -144,8 +144,8 @@
 
 		background-color: #02aae5;
 
-		background-image: 
-			radial-gradient(at 47% 33%, hsl(211.89, 100%, 50%) 0, transparent 59%), 
+		background-image:
+			radial-gradient(at 47% 33%, hsl(211.89, 100%, 50%) 0, transparent 59%),
 			radial-gradient(at 82% 65%, hsl(19.23, 100%, 85%) 0, transparent 55%);
 	}
 
@@ -175,11 +175,10 @@
 		data: () => ({
 			items: [
 				{ name: 'Accueil', icon: 'fa fa-list-alt', url: '/' },
-				{ name: 'Connexion', icon: 'far fa-map', url: '/login' },
+				{ name: 'Produits', icon: 'fa fa-th', url: '/products' },
+				{ name: 'Produit', icon: 'far fa-map', url: '/product' },
 				{ name: 'Profil', icon: 'far fa-address-card', url: '/profile' },
 				{ name: 'Options', icon: 'fa fa-cog', url: '/options' },
-				{ name: 'Produits', icon: 'fa fa-th', url: '/products' },
-				{ name: 'Produit', icon: 'far fa-map', url: '/product' }
 			],
 		}),
 	};
