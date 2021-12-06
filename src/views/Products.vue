@@ -13,18 +13,18 @@
 						</v-card>
 					</v-col>
 
-					<v-col v-for="index in 12" :key="index" cols="12" sm="6" md="4" xl="3">
+					<v-col v-for="item in data" :key="item.id" cols="12" sm="6" md="4" xl="3">
 						<v-card class="mx-auto glasscard white--text">
-							<v-img height="20vh" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg"></v-img>
+							<v-img v-if="item.avatar" height="20vh" :src="item.avatar"></v-img>
 
-							<v-card-title class="pb-0">Ballon de basket</v-card-title>
+							<v-card-title class="pb-0">{{ item.name }}</v-card-title>
 
 							<v-card-text>
 								<div class="text-subtitle-1">
-									{{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
+									{{ item.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
 								</div>
 
-								<div>C'est un super ballon de basket basique, mais il est super !</div>
+								<div>{{ item.shortDesc }}</div>
 							</v-card-text>
 
 							<v-divider class="mx-4"></v-divider>
@@ -35,33 +35,56 @@
 								<v-row>
 									<v-col v-for="index in 5" :key="index" class="pb-1 pt-0">
 										<v-chip class="glass">
-											Sarahlpb {{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
+											Sarahlpb {{ item.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
 										</v-chip>
 									</v-col>
 								</v-row>
 							</v-card-text>
 
 							<v-card-actions>
-								<v-btn text @click="placeBid = !placeBid" color="primary">
-									Poser une enchère
-								</v-btn>
+								<v-row>
+									<v-col cols="12" sm="auto" align="center">
+										<v-row>
+											<v-col cols="6" sm="auto">
+												<v-btn text block @click="placeBid = !placeBid" color="primary">
+													Voir
+												</v-btn>
+											</v-col>
+											<v-col cols="6" sm="auto">
+												<v-btn text block @click="activeBid = item, placeBid = !placeBid" color="secondary">
+													Enchérir
+												</v-btn>
+											</v-col>
+										</v-row>
+									</v-col>
 
-								<v-tooltip bottom color="glass">
-									<template v-slot:activator="{ on, attrs }">
-										<v-btn text icon color="accent" v-bind="attrs" v-on="on">
-											<v-icon small>far fa-bell</v-icon>
-										</v-btn>
-									</template>
-									<span>Créer un suivi</span>
-								</v-tooltip>
-								<v-tooltip bottom color="glass">
-									<template v-slot:activator="{ on, attrs }">
-										<v-btn text icon color="pink" v-bind="attrs" v-on="on">
-											<v-icon small>far fa-heart</v-icon>
-										</v-btn>
-									</template>
-									<span>Ajouter aux favoris</span>
-								</v-tooltip>
+									<v-spacer></v-spacer>
+
+									<v-col cols="12" sm="auto" align="center">
+										<v-row>
+											<v-col cols="6" sm="auto">
+												<v-tooltip bottom color="glass">
+													<template v-slot:activator="{ on, attrs }">
+														<v-btn text icon color="accent" v-bind="attrs" v-on="on">
+															<v-icon small>far fa-bell</v-icon>
+														</v-btn>
+													</template>
+													<span>Créer un suivi</span>
+												</v-tooltip>
+											</v-col>
+											<v-col cols="6" sm="auto">
+												<v-tooltip bottom color="glass">
+													<template v-slot:activator="{ on, attrs }">
+														<v-btn text icon color="pink" v-bind="attrs" v-on="on">
+															<v-icon small>far fa-heart</v-icon>
+														</v-btn>
+													</template>
+													<span>Ajouter aux favoris</span>
+												</v-tooltip>
+											</v-col>
+										</v-row>
+									</v-col>									
+								</v-row>
 							</v-card-actions>
 						</v-card>
 					</v-col>
@@ -92,12 +115,12 @@
 				<v-row>
 					<v-col cols="12" md="4">
 						<v-card class="mx-auto">
-							<v-img class="white--text align-end" height="200px" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg">
-								<v-card-title class="pb-0">Ballon de basket</v-card-title>
+							<v-img class="white--text align-end" height="200px" :src="activeBid.avatar">
+								<v-card-title class="pb-0" v-bind:class="{'black--text': !activeBid.avatar}">{{ activeBid.name }}</v-card-title>
 
-								<v-card-text align="left">
+								<v-card-text align="left" v-bind:class="{'black--text': !activeBid.avatar}">
 									<div class="text-subtitle-1">
-										{{ Math.round(price).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
+										{{ activeBid.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
 									</div>
 
 									<div>C'est un super ballon de basket basique, mais il est super !</div>
@@ -114,7 +137,7 @@
 							<p>Souhaitez vous poser une enchère sur ce produit ?</p>
 
 							<v-row class="col-12 pb-3">
-								<v-btn class="ma-3 mt-0" color="secondary" v-for="index in 5" :key="index">{{ Math.round(price + index * 10).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ (+{{index}}0€)</v-btn>
+								<v-btn class="ma-3 mt-0" color="secondary" v-for="index in 5" :key="index">{{ Math.round(activeBid.prices.actual + index * 10).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ (+{{index}}0€)</v-btn>
 							</v-row>
 
 							<span class="font-italic">Cliquer sur le bouton vous enverra sur la page de paiement.</span>
@@ -149,12 +172,26 @@ export default {
 	data() {
 		return {
 			placeBid: false,
-			price: 500
+			price: 500,
+
+			activeBid: this.$models.bid,
+
+			data: []
 		}
 	},
 
 	created() {
+		var documentRef = this.$firebase.database().ref(`products/`);
 
+		documentRef.on("child_added", snap => {
+			this.data.push({
+				...this.$models.bid,
+				...snap.val(),
+				id: snap.getRef().key
+			});
+		});
+
+		console.log(this.data)
 	}
 }
 </script>
