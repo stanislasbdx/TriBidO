@@ -9,8 +9,8 @@
 						<h2>Connexion</h2>
 						<v-row class="align-content-center pt-16 pb-10 py-2">
 							<v-col class="py-0 px-16">
-								<v-text-field v-model="email" label="Email" outlined rounded> </v-text-field>
-								<v-text-field v-model="password" label="Mot de passe" outlined rounded></v-text-field>
+								<v-text-field v-model="email" label="Email" > </v-text-field>
+								<v-text-field v-model="password" label="Mot de passe" ></v-text-field>
 							</v-col>
 						</v-row>
 						<v-row class="py-2">
