@@ -20,7 +20,7 @@
 						</v-col>
 					</v-row>
 
-					<v-btn @click="signup()" class="rounded-xl" color="secondary" x-large>Envoyer</v-btn>
+					<v-btn @click="signup()" color="secondary" x-large>Envoyer</v-btn>
 				</v-card-text>
 			</v-card>
 		</v-col>
