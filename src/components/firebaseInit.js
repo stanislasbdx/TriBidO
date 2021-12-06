@@ -1,7 +1,6 @@
 import firebase from 'firebase';
-import 'firebase/firestore';
 
-const firebaseConfig = {
+var config = {
 	apiKey: "AIzaSyAOZPiF8RPGBnJFppoe234nXkAA1AqRJ2E",
 	authDomain: "tribido-236f1.firebaseapp.com",
 	databaseURL: "https://tribido-236f1-default-rtdb.europe-west1.firebasedatabase.app",
@@ -11,7 +10,6 @@ const firebaseConfig = {
 	appId: "1:854985728785:web:4434d47373316a402162b0",
 	measurementId: "G-ZGV8YBGH6M"
 };
+firebase.initializeApp(config);
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-export default firebaseApp.firestore();
+export default firebase.database();
