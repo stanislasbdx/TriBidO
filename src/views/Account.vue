@@ -24,7 +24,7 @@
 
 						<hr>
 
-						<v-row class="py-10 align-content-center">
+						<v-row class="pt-5 align-content-center">
 							<v-col cols="12" lg="6">
 								<v-text-field v-model="Name" label="Display name" hint="Visible to other members" persistent-hint clearable placeholder="James"></v-text-field>
 							</v-col>
@@ -33,17 +33,37 @@
 							</v-col>
 						</v-row>
 
-						<hr>
-
-						<v-row class="py-10 align-content-center">
+						<v-row class=" align-content-center">
 							<v-col cols="12" lg="6">
-								<v-text-field v-model="message1" label="Email adress" hint="For notification and logging in" persistent-hint clearable></v-text-field>
+								<v-text-field v-model="EmailAdress" label="Email adress" hint="For notification and logging in" persistent-hint clearable></v-text-field>
 							</v-col>
 							<v-col cols="12" lg="6">
-								<v-text-field v-model="message1" label="Phone number" hint="For receiving notifications" persistent-hint clearable></v-text-field>
+								<v-text-field v-model="PhoneNumber" label="Phone number" hint="For receiving notifications" persistent-hint clearable></v-text-field>
 							</v-col>
 						</v-row>
-						<v-col class="d-flex justify-end">
+						<v-row>
+							<v-col>
+								<v-text-field v-model="Adress" label="Adress" hint="For receiving notifications" persistent-hint clearable></v-text-field>
+							</v-col>
+						</v-row>
+						<v-row class=" pb-10 align-content-center">
+							<v-col cols="12" lg="6">
+								<v-text-field v-model="DateBirth" label="Date of birth" hint="For notification and logging in" persistent-hint clearable></v-text-field>
+							</v-col>
+							<v-col cols="12" lg="6">
+								<v-text-field v-model="Gender" label="Gender" hint="For receiving notifications" persistent-hint clearable></v-text-field>
+							</v-col>
+						</v-row>
+						<hr>
+						<v-row class=" pt-5 align-content-center">
+							<v-col cols="12" lg="6">
+								<v-text-field v-model="Username" label="Username" hint="For notification and logging in" persistent-hint clearable></v-text-field>
+							</v-col>
+							<v-col cols="12" lg="6">
+								<v-text-field v-model="Password" label="Password" hint="For receiving notifications" persistent-hint clearable></v-text-field>
+							</v-col>
+						</v-row>
+						<v-col class="pa-5 d-flex justify-end">
 							<v-btn @click="signup()" color="secondary" x-large>Envoyer</v-btn>
 						</v-col>
 					</v-card-text>
