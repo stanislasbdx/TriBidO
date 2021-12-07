@@ -41,7 +41,12 @@ const routes = [
 		path: "/account",
 		name: "Account",
 		component: () => import('@/views/Account.vue')
-	}
+	},
+	{
+		path: "/offer",
+		name: "Offer",
+		component: () => import('@/views/Offer.vue')
+	},
 ];
 
 const router = new VueRouter({
