@@ -28,9 +28,18 @@
 							</v-row>
 						</v-row>
 						
-						<v-col>
+						<div>
 							<v-btn @click="login()" color="secondary" large>Connexion</v-btn>
-						</v-col>
+							
+							<v-spacer class="mt-4"></v-spacer>
+
+							<span style="cursor: pointer; line-height: 20px; letter-spacing: normal; font-size: 16px; font-weight: 400;" @click="$router.push('register')">
+								Je n'ai pas de compte
+								<v-icon small class="mb-1">
+									fas fa-share-square
+								</v-icon>
+							</span>
+						</div>
 
 					</v-card-text>
 				</v-card>

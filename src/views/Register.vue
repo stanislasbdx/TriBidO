@@ -20,12 +20,13 @@
 						</v-col>
 					</v-row>
 
-					<v-btn @click="signup()" color="secondary" x-large>Envoyer</v-btn>
-				</v-card-text>
-			</v-card>
-		</v-col>
-    </v-row>
-  </div>
+
+							<span style="cursor: pointer; line-height: 20px; letter-spacing: normal; font-size: 16px; font-weight: 400;" @click="$router.push('login')">
+								J'ai déjà un compte
+								<v-icon small class="mb-1">
+									fas fa-share-square
+								</v-icon>
+							</span>
 </template>
 
 <style scoped>
