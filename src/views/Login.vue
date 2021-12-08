@@ -2,14 +2,14 @@
 	<div>
 		<Header></Header>
 		<v-row justify="center">
-			<v-col justify="center" align="center" cols="5">
+			<v-col justify="center" align="center" cols="6">
 				<v-card class="glasscard py-5">
 					<v-card-text>
 						<v-icon x-large class="py-4" color="white">fas fa-user-circle</v-icon>
 						<h2 class="white--text">Connexion</h2>
 						<v-row class="align-content-center pt-10 px-12">
 							<v-col class="px-0" cols="12">
-								<v-text-field v-model="email" label="Email" > </v-text-field>
+								<v-text-field v-model="email" label="Email" :rules="$fieldsRules.email"></v-text-field>
 								<v-text-field v-model="password" type="password" label="Mot de passe" ></v-text-field>
 							</v-col>
 
