@@ -24,12 +24,30 @@
 					</v-col>
 				</v-row>
 
-				<v-col cols="12" class="mt-12 pt-12">
-					<v-icon v-if="String($route.path) == '/login'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
+				<v-col cols="12" class="mt-12 pt-12" v-if="user">
+					<v-icon v-if="String($route.path) == '/account'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
 						far fa-user-circle
 					</v-icon>
-					<v-icon v-else color="accent" large style="cursor: pointer;" @click="$router.push('/login')">
+					<v-icon v-else color="accent" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;" @click="$router.push('/account')">
 						far fa-user-circle
+					</v-icon>
+
+					<v-spacer class="mt-3"></v-spacer>
+					<v-tooltip right>
+						<template v-slot:activator="{ on, attrs }">
+							<v-icon v-bind="attrs" v-on="on" color="accent" style="cursor: pointer;" @click="logout()">
+								fa fa-sign-out
+							</v-icon>
+						</template>
+						<span>Se déconnecter</span>
+					</v-tooltip>
+				</v-col>
+				<v-col cols="12" class="mt-12 pt-12" v-else>
+					<v-icon v-if="String($route.path) == '/login' || String($route.path) == '/register'" color="primary" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;">
+						fa fa-sign-in
+					</v-icon>
+					<v-icon v-else color="accent" v-bind:large="$vuetify.breakpoint.mdAndUp" style="cursor: pointer;" @click="$router.push('/login')">
+						fa fa-sign-in
 					</v-icon>
 				</v-col>
 			</div>
@@ -179,7 +197,26 @@
 				{ name: 'Profil', icon: 'far fa-address-card', url: '/profile' },
 				{ name: 'Options', icon: 'fa fa-cog', url: '/options' },
 			],
+
+			user: {}
 		}),
+
+		created() {
+			this.user = this.$firebase.auth().currentUser;
+		},
+
+		methods: {
+			async logout() {
+				try {
+					await this.$firebase.auth().signOut();
+					this.$router.replace({
+						path: "Login"
+					});
+				} catch (err) {
+					console.log(err);
+				}	
+			}
+		}
 	};
 
 </script>
