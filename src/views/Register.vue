@@ -21,11 +21,11 @@
 
 							<v-row class="align-content-center py-2">
 								<v-col cols="12" lg="6" class="py-0">
-									<v-text-field v-model="password" label="Mot de passe" :rules="$fieldsRules.required('mot de passe')">
+									<v-text-field v-model="password" label="Mot de passe" type="password" :rules="$fieldsRules.required('mot de passe')">
 									</v-text-field>
 								</v-col>
 								<v-col cols="12" lg="6" class="py-0 pb-6">
-									<v-text-field v-model="confirmationPassword" label="Confirmation de mot de passe" :rules="$fieldsRules.password(password)">
+									<v-text-field v-model="confirmationPassword" label="Confirmation de mot de passe" type="password" :rules="$fieldsRules.password(password)">
 									</v-text-field>
 								</v-col>
 							</v-row>
