@@ -44,9 +44,9 @@ const routes = [
 		component: () => import('@/views/Account.vue')
 	},
 	{
-		path: "/offer",
-		name: "Offer",
-		component: () => import('@/views/Offer.vue')
+		path: "/bid/create",
+		name: "CreateBid",
+		component: () => import('@/views/CreateBid.vue')
 	},
 ];
 
