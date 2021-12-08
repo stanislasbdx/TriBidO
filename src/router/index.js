@@ -28,15 +28,26 @@ const routes = [
 		component: () => import('@/views/Products.vue')
 	},
 	{
-		path: "/product",
+		path: "/product/:id",
 		name: "Product",
-		component: () => import('@/views/Product.vue')
+		component: () => import('@/views/Product.vue'),
+		props: true
 	},
 	{
 		path: "/profile",
 		name: "Profile",
 		component: () => import('@/views/Profile.vue')
-	}
+	},
+	{
+		path: "/account",
+		name: "Account",
+		component: () => import('@/views/Account.vue')
+	},
+	{
+		path: "/offer",
+		name: "Offer",
+		component: () => import('@/views/Offer.vue')
+	},
 ];
 
 const router = new VueRouter({
