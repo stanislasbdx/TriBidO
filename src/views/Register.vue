@@ -94,6 +94,8 @@
 							email: this.email,
 							creationDate: new Date().getTime()
 						});
+
+						this.$router.push('/account');
 					});
 				}
 			},
