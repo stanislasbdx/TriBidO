@@ -6,19 +6,24 @@
 				<v-card class="glasscard py-5 px-6">
 					<v-card-text class="white--text">
 						<v-row>
-							<v-col lg="2">
-								<v-avatar color="secondary" size="80">IMG</v-avatar>
+							<v-col cols="12" md="auto" align="center">
+								<v-avatar>
+									<img
+										contain
+										src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Kurt&hairColor=Platinum&facialHairType=BeardLight&facialHairColor=Auburn&clotheType=Overall&clotheColor=Gray01&eyeType=Close&eyebrowType=AngryNatural&mouthType=Sad&skinColor=Pale"
+									/>
+								</v-avatar>
 							</v-col>
-							<v-col lg="6" class="d-flex align-center">
+							<v-col cols="12" md="8">
 								<v-col>
 
-									<h3 v-text="email"></h3>
-									<h3 v-text="username"></h3>
+									<h3 class="display-2 font-weight-light" v-text="user.displayName"></h3>
+									<h3 class="font-weight-light" v-text="user.email"></h3>
 
 								</v-col>
 							</v-col>
-							<v-col lg="0" class="d-flex align-center justify-end ">
-								<v-btn @click="signup()" color="secondary" x-medium>Modifier</v-btn>
+							<v-col cols="auto" md="1" class="d-flex align-center justify-end">
+								<v-btn @click="$router.push('/account')" color="secondary" x-medium>Modifier</v-btn>
 							</v-col>
 
 						</v-row>
@@ -30,136 +35,26 @@
 
 		<v-row justify="center">
 			<v-col cols="12">
-				<v-card class="glasscard pb-10 px-8">
+				<v-card class="glasscard mb-3">
 					<v-col>
-						<h2 align="center" class="white--text d-flex align-start justify-center">Mes Enchères</h2>
+						<h2 align="center" class="white--text d-flex align-start justify-center">Enchères de {{ user.displayName }}</h2>
 					</v-col>
-
-					<v-row>
-						<v-col lg="3">
-							<v-card class="mx-auto glasscard">
-								<v-img height="20vh" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg"></v-img>
-
-								<v-card-title class="pb-0">Ballon de basket</v-card-title>
-
-								<v-card-text>
-									<div class="text-subtitle-1">
-										{{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
-									</div>
-
-									<div>C'est un super ballon de basket basique, mais il est super !</div>
-								</v-card-text>
-
-								<v-divider class="mx-4"></v-divider>
-
-								<v-card-title>Dernières offres</v-card-title>
-
-								<v-card-text>
-									<v-row>
-										<v-col v-for="index in 2" :key="index" class="pb-1 pt-0">
-											<v-chip class="glass">
-												Sarahlpb {{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
-											</v-chip>
-										</v-col>
-									</v-row>
-								</v-card-text>
-							</v-card>
-						</v-col>
-						<v-col lg="3">
-
-							<v-card class="mx-auto glasscard">
-								<v-img height="20vh" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg"></v-img>
-
-								<v-card-title class="pb-0">Ballon de basket</v-card-title>
-
-								<v-card-text>
-									<div class="text-subtitle-1">
-										{{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
-									</div>
-
-									<div>C'est un super ballon de basket basique, mais il est super !</div>
-								</v-card-text>
-
-								<v-divider class="mx-4"></v-divider>
-
-								<v-card-title>Dernières offres</v-card-title>
-
-								<v-card-text>
-									<v-row>
-										<v-col v-for="index in 2" :key="index" class="pb-1 pt-0">
-											<v-chip class="glass">
-												Sarahlpb {{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
-											</v-chip>
-										</v-col>
-									</v-row>
-								</v-card-text>
-							</v-card>
-
-						</v-col>
-						<v-col lg="3">
-
-							<v-card class="mx-auto glasscard">
-								<v-img height="20vh" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg"></v-img>
-
-								<v-card-title class="pb-0">Ballon de basket</v-card-title>
-
-								<v-card-text>
-									<div class="text-subtitle-1">
-										{{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
-									</div>
-
-									<div>C'est un super ballon de basket basique, mais il est super !</div>
-								</v-card-text>
-
-								<v-divider class="mx-4"></v-divider>
-
-								<v-card-title>Dernières offres</v-card-title>
-
-								<v-card-text>
-									<v-row>
-										<v-col v-for="index in 2" :key="index" class="pb-1 pt-0">
-											<v-chip class="glass">
-												Sarahlpb {{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
-											</v-chip>
-										</v-col>
-									</v-row>
-								</v-card-text>
-							</v-card>
-
-						</v-col>
-						<v-col lg="3">
-
-							<v-card class="mx-auto glasscard">
-								<v-img height="20vh" src="http://s1.picswalls.com/wallpapers/2014/07/25/basketball-desktop-wallpaper_041014235_92.jpg"></v-img>
-
-								<v-card-title class="pb-0">Ballon de basket</v-card-title>
-
-								<v-card-text>
-									<div class="text-subtitle-1">
-										{{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
-									</div>
-
-									<div>C'est un super ballon de basket basique, mais il est super !</div>
-								</v-card-text>
-
-								<v-divider class="mx-4"></v-divider>
-
-								<v-card-title>Dernières offres</v-card-title>
-
-								<v-card-text>
-									<v-row>
-										<v-col v-for="index in 2" :key="index" class="pb-1 pt-0">
-											<v-chip class="glass">
-												Sarahlpb {{ Math.round(Math.random() * 500).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
-											</v-chip>
-										</v-col>
-									</v-row>
-								</v-card-text>
-							</v-card>
-							
-						</v-col>
-					</v-row>
 				</v-card>
+
+				<v-row>
+
+					<template v-if="products.length > 0">
+						<v-col cols="12" sm="6" md="4" xl="3" v-for="item in products" :key="item.id">
+							<Products :product="item" :lastBids="2"></Products>
+						</v-col>
+					</template>
+					<template v-else>
+						<v-col cols="12" align="center">
+							<p class="white--text">Cet utilisateur n'a pas créé d'enchère.</p>
+						</v-col>
+					</template>
+					
+				</v-row>
 			</v-col>
 		</v-row>
 	</div>
@@ -167,22 +62,37 @@
 
 <script>
 	import Header from "@/components/graphics/Header";
+	import Products from "@/components/Product";
+
 	export default {
 		name: "Profile",
 
 		components: {
-			Header
+			Header,
+			Products
 		},
 
 		data() {
 			return {
-				email: 'Dididier',
-				username: 'dididier.gus212@gmail.com'
+				user: {},
+
+				products: []
 			}
 		},
 
 		created() {
+			this.$firebase.database().ref('users/' + this.$firebase.auth().currentUser.uid).on('value', (snapshot) => {
+				this.user = snapshot.val();
+			});
 
+			this.products = [];
+			this.$firebase.database().ref(`products/`).on("child_added", snap => {
+				if(snap.val().creator == this.$firebase.auth().currentUser.uid) this.products.push({
+					...this.$models.bid,
+					...snap.val(),
+					id: snap.getRef().key
+				});
+			});
 		}
 	}
 
