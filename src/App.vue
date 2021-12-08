@@ -32,9 +32,14 @@
 						far fa-user-circle
 					</v-icon>
 
-					<v-spacer class="mt-3"></v-spacer>
-					<v-tooltip right>
-						<template v-slot:activator="{ on, attrs }">
+						<v-tooltip right>
+							<template v-slot:activator="{ on, attrs }">
+								<v-icon v-bind="attrs" v-on="on" :class="{'accent--text': String($route.path) != '/profile', 'primary--text': String($route.path) == '/profile'}" style="cursor: pointer;" @click="$router.push('/profile')">
+									far fa-address-card
+								</v-icon>
+							</template>
+							<span>Accéder au profil</span>
+						</v-tooltip>
 							<v-icon v-bind="attrs" v-on="on" color="accent" style="cursor: pointer;" @click="logout()">
 								fa fa-sign-out
 							</v-icon>
