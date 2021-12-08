@@ -1,5 +1,10 @@
-# BOILER PLATE
+# TriBidO
+
 ## Stack : Vue Firebase Vuetify
 
+
 ### Installation
-``git clone https://stanislasbdx@bitbucket.org/infographartweb/boilerplate-vue-firebase-vuetify.git``
+
+- ``npm install``
+
+- ``npm run serve``
