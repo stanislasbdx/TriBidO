@@ -32,7 +32,7 @@
 						</v-form>
 
 						<div>
-							<v-btn @click="signup()" color="secondary" large>S'inscrire</v-btn>
+							<v-btn @click="register()" color="secondary" large>S'inscrire</v-btn>
 							
 							<v-spacer class="mt-4"></v-spacer>
 
@@ -78,23 +78,23 @@
 				return false;
 			},
 
-			signup() {
+			register() {
 				this.$refs.regForm.validate();
 
-				if(!this.password || !this.verifyPassword() || this.email) return false;
+				if(!this.password || !this.email) return;
 
 				if (this.verifyPassword()) {
 					this.$firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((credentials) => {
-							credentials.user.updateProfile({
-								displayName: this.username
-							});
-
-							this.$db.ref(`users/${credentials.user.uid}`).set({
-								displayName: this.username,
-								email: this.email,
-								creationDate: new Date().getTime()
-							});
+						credentials.user.updateProfile({
+							displayName: this.username
 						});
+
+						this.$db.ref(`users/${credentials.user.uid}`).set({
+							displayName: this.username,
+							email: this.email,
+							creationDate: new Date().getTime()
+						});
+					});
 				}
 			},
 		},
