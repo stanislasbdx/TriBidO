@@ -227,7 +227,7 @@
 
 		methods: {
 			regreshTime() {
-				this.bid.timeOptions.bidStartTime = new Date(`${this.date} ${this.time}`).getTime();
+				this.bid.timeOptions.bidStopTime = new Date(`${this.date} ${this.time}`).getTime();
 				console.log(new Date(`${this.date} ${this.time}`));
 			},
 
@@ -245,6 +245,9 @@
 			},
 
 			submit() {
+				this.bid.timeOptions.bidStartTime = new Date().getTime();
+				this.bid.timeOptions.createdAt = new Date().getTime();
+
 				this.$db.ref(`products/`).push({
 					...this.bid
 				}).then(res => {
