@@ -198,8 +198,11 @@
 	}
 	.glass {
 		background: rgba( 255, 255, 255, 0.10 )!important;
+		background-color: rgba( 255, 255, 255, 0.10 )!important;
 		backdrop-filter: blur( 4px )!important;
 		-webkit-backdrop-filter: blur( 4px )!important;
+
+		color: white!important;
 	}
 
 	.v-card {
