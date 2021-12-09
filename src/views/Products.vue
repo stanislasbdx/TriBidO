@@ -60,17 +60,13 @@ export default {
 	},
 
 	created() {
-		var documentRef = this.$firebase.database().ref(`products/`);
-
-		documentRef.on("child_added", snap => {
+		this.$firebase.database().ref(`products/`).on("child_added", snap => {
 			this.data.push({
 				...this.$models.bid,
 				...snap.val(),
 				id: snap.getRef().key
 			});
 		});
-
-		console.log(this.data)
 	}
 }
 </script>
