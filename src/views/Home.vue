@@ -23,7 +23,59 @@
 						</v-col>
 					</v-row>
 				</v-card>
+					<v-col cols="12" lg="12" class="px-7 d-flex justify-start align-end">
+						<h2>catégorie</h2>
+					</v-col>
 			</v-col>
+				<v-row justify="space-around">
+					
+						<v-avatar color="indigo">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="green">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="pink">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="purple">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="yellow">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="brown">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="orange">
+							<v-icon dark>
+								mdi-account-circle
+							</v-icon>
+						</v-avatar>
+
+						<v-avatar color="red">
+							<span class="white--text text-h5">CJ</span>
+						</v-avatar>
+					
+			</v-row>
 			<v-col lg="12" cols="12" class="py-8">
 				<v-col>
 					<v-row>
@@ -32,6 +84,7 @@
 						</v-col>
 						<v-col v-for="index in 6" :key="index">
 							<v-card class="mx-auto glasscard" max-width="210" outlined>
+								
 								<v-list-item three-line>
 									<v-list-item-content>
 										<div class="text-overline mb-4">
