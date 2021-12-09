@@ -218,7 +218,7 @@
 			items: [
 				{ name: 'Accueil', icon: 'fa fa-list-alt', url: '/' },
 				{ name: 'Produits', icon: 'fa fa-th', url: '/products' },
-				{ name: 'Produit', icon: 'far fa-map', url: '/product' }
+				{ name: 'Ajouter une enchère', icon: 'fas fa-plus', url: '/bid/create' }
 			],
 
 			user: {}
