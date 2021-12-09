@@ -29,6 +29,9 @@ Vue.prototype.$fieldsRules = fieldsRules;
 
 Vue.prototype.$models = models;
 
+import moment_ from "moment";
+Vue.prototype.$moment = moment_;
+
 firebase.auth().onAuthStateChanged(() => {
 	new Vue({
 		vuetify,
