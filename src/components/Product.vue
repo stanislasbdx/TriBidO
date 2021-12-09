@@ -126,7 +126,7 @@ export default {
 		product: {
 			type: Object
 		},
-		lastBids: {
+		maxBids: {
 			type: Number,
 			default: 5
 		}

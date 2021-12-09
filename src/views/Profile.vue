@@ -45,7 +45,7 @@
 
 					<template v-if="products.length > 0">
 						<v-col cols="12" sm="6" md="4" xl="3" v-for="item in products" :key="item.id">
-							<Products :product="item" :lastBids="2"></Products>
+							<Products :product="item" :maxBids="2"></Products>
 						</v-col>
 					</template>
 					<template v-else>
