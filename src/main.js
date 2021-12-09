@@ -31,6 +31,7 @@ Vue.prototype.$models = models;
 
 import moment_ from "moment";
 Vue.prototype.$moment = moment_;
+moment_.locale('fr');
 
 firebase.auth().onAuthStateChanged(() => {
 	new Vue({
