@@ -59,7 +59,7 @@ const routes = [
 		}
 	},
 	{
-		path: "/bid/create",
+		path: "/createBid",
 		name: "CreateBid",
 		component: () => import('@/views/CreateBid.vue'),
 		meta: {
