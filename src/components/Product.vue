@@ -1,27 +1,34 @@
 <template>
 	<div>
 		<v-card class="mx-auto glasscard white--text">
-			<v-img v-if="product.avatar" height="20vh" :src="product.avatar"></v-img>
+			<v-img v-if="product.img.main" height="20vh" :src="product.img.main"></v-img>
 
 			<v-card-title class="pb-0">{{ product.name }}</v-card-title>
 
 			<v-card-text>
-				<div class="text-subtitle-1">
-					{{ product.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
+				<div class="text-subtitle-1 primary--text">
+					{{ product.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
+					• {{ Math.round(Math.random() * 10) }} enchères
+					• Il reste {{ $moment().to(product.timeOptions.bidStopTime, true) }}
 				</div>
+				<div class="primary--text">
+					Fin de l'enchère le {{ $moment(product.timeOptions.bidStopTime).format("DD/MM/yyyy à HH:mm") }}.
+				</div>
+
+				<v-divider style="background-color: white;" class="my-4"></v-divider>
 
 				<div>{{ product.shortDesc }}</div>
 			</v-card-text>
 
-			<v-divider class="mx-4"></v-divider>
+			<v-divider class="mx-4" style="background-color: white;"></v-divider>
 
 			<v-card-title>Dernières offres</v-card-title>
 
 			<v-card-text>
 				<v-row>
-					<v-col v-for="index in product" :key="index" class="pb-1 pt-0">
-						<v-chip class="glass">
-							Sarahlpb {{ product.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
+					<v-col v-for="index in maxBids" :key="index" class="pb-1 pt-0">
+						<v-chip class="glass black--text">
+							{{ randomUsers[Math.floor(Math.random() * randomUsers.length)] }} {{ Math.round(product.prices.actual * (Math.random() * 5)).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
 						</v-chip>
 					</v-col>
 				</v-row>
@@ -29,14 +36,14 @@
 
 			<v-card-actions>
 				<v-row>
-					<v-col cols="12" sm="auto" align="center">
+					<v-col cols="12" sm="5" align="center">
 						<v-row>
-							<v-col cols="6" sm="auto">
-								<v-btn text block @click="placeBid = !placeBid" color="primary">
+							<v-col cols="6">
+								<v-btn text block @click="$router.push('bid/' + product.id)" color="primary">
 									Voir
 								</v-btn>
 							</v-col>
-							<v-col cols="6" sm="auto">
+							<v-col cols="6">
 								<v-btn text block @click="placeBid = !placeBid" color="secondary">
 									Enchérir
 								</v-btn>
@@ -46,9 +53,9 @@
 
 					<v-spacer></v-spacer>
 
-					<v-col cols="12" sm="auto" align="center">
+					<v-col cols="12" sm="4" align="center" class="mr-3">
 						<v-row>
-							<v-col cols="6" sm="auto">
+							<v-col cols="6">
 								<v-tooltip bottom color="glass">
 									<template v-slot:activator="{ on, attrs }">
 										<v-btn text icon color="accent" v-bind="attrs" v-on="on">
@@ -58,7 +65,7 @@
 									<span>Créer un suivi</span>
 								</v-tooltip>
 							</v-col>
-							<v-col cols="6" sm="auto">
+							<v-col cols="6">
 								<v-tooltip bottom color="glass">
 									<template v-slot:activator="{ on, attrs }">
 										<v-btn text icon color="pink" v-bind="attrs" v-on="on">
@@ -79,15 +86,15 @@
 				<v-row>
 					<v-col cols="12" md="4">
 						<v-card class="mx-auto">
-							<v-img class="white--text align-end" height="200px" :src="product.avatar">
-								<v-card-title class="pb-0" v-bind:class="{'black--text': !product.avatar}">{{ product.name }}</v-card-title>
+							<v-img class="white--text align-end" height="200px" :src="product.img.main" style="background-color: black;">
+								<v-card-title class="pb-0" v-bind:class="{'black--text': !product.img.main}">{{ product.name }}</v-card-title>
 
-								<v-card-text align="left" v-bind:class="{'black--text': !product.avatar}">
-									<div class="text-subtitle-1">
-										{{ product.prices.actual.toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • 32 enchères
+								<v-card-text align="left" v-bind:class="{'black--text': !product.img.main}">
+									<div class="text-subtitle-1 overline">
+										<span class="caption">Prix actuel</span> {{ Number(product.prices.actual).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€ • <span class="caption">Prix de départ</span> {{ Number(product.prices.start).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
 									</div>
 
-									<div>C'est un super ballon de basket basique, mais il est super !</div>
+									<div>{{ product.shortDesc }}</div>
 								</v-card-text>
 							</v-img>
 						</v-card>
@@ -133,12 +140,10 @@ export default {
 	},
 	data() {
 		return {
-			placeBid: false
+			placeBid: false,
+
+			randomUsers: ['Sarahlpb', 'psyroman212', 'stan1712', 'Kikyris', 'Sacrigmatik', 'Pierre D.', 'Over_404', '775pl', 'Bggs', 'indes33']
 		}
 	}
 }
 </script>
-
-<style>
-
-</style>
