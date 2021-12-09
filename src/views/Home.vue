@@ -1,157 +1,131 @@
 <template>
 	<div>
 		<Header></Header>
+
+		<h2 class="display-3 white--text">Bonjour {{ user.displayName }},</h2>
+		<h1 class="display-5 font-weight-light white--text">Bienvenue sur TriBidO !</h1>
+
 		<v-row>
-			<v-col lg="12" cols="12">
-				<v-card class="glass">
-					<v-row class="align-content-center py-2">
-						<v-col cols="12" lg="12" class="px-7 d-flex justify-end align-start">
-							<h1>TriBid0</h1>
-						</v-col>
-						<v-col>
-							<v-row>
-								<v-col cols="3"></v-col>
-								<v-col cols="6" class="px-16 d-flex align-center justify-center">
-									<v-text-field label="Que recherchez vous ?" type="text"></v-text-field>
-								</v-col>
-								<v-col cols="3"></v-col>
-							</v-row>
-						</v-col>
-						<v-col cols="12" lg="12" class="px-7 d-flex justify-start align-end">
-							<h2>Bonjour, <br>
-								bienvenue</h2>
-						</v-col>
-					</v-row>
-				</v-card>
-					<v-col cols="12" lg="12" class="px-7 d-flex justify-start align-end">
-						<h2>catégorie</h2>
+			<v-col cols="12">
+				<h1 class="title white--text">Vos offres suivies</h1>
+			</v-col>
+
+			<v-col cols="12" sm="6" md="4" v-for="item in data.slice(0, 1)" :key="item.id">
+				<ProductMin :product="item"></ProductMin>
+			</v-col>
+		</v-row>
+
+		<v-row>
+			<v-col cols="12">
+				<h1 class="title white--text mt-6">Catégories</h1>
+			</v-col>
+
+			<v-col cols="6" sm="4" md="3" lg="2" v-for="item in categories" :key="item.id">
+				<v-sheet class="categCard" :style="`background-color: ${item.color};`" align="center" justify="center">
+				
+					<v-col>
+						<v-icon :style="`color: ${item.textColor};`">{{ item.icon }}</v-icon>
 					</v-col>
-			</v-col>
-				<v-row justify="space-around">
 					
-						<v-avatar color="indigo">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
+					<v-col class="white--text pt-0">{{ item.label }}</v-col>
 
-						<v-avatar color="green">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="pink">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="purple">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="yellow">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="brown">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="orange">
-							<v-icon dark>
-								mdi-account-circle
-							</v-icon>
-						</v-avatar>
-
-						<v-avatar color="red">
-							<span class="white--text text-h5">CJ</span>
-						</v-avatar>
-					
-			</v-row>
-			<v-col lg="12" cols="12" class="py-8">
-				<v-col>
-					<v-row>
-						<v-col cols="12" lg="12" class="px-6">
-							<h3 color="secondary">Vos offres suivis :</h3>
-						</v-col>
-						<v-col v-for="index in 6" :key="index">
-							<v-card class="mx-auto glasscard" max-width="210" outlined>
-								
-								<v-list-item three-line>
-									<v-list-item-content>
-										<div class="text-overline mb-4">
-											OVERLINE
-										</div>
-										<v-list-item-title class="text-h6 mb-1">
-											Headline 6
-										</v-list-item-title>
-										<v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
-									</v-list-item-content>
-
-									<v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
-								</v-list-item>
-
-								<v-card-actions>
-									<v-btn outlined rounded text>
-										Button
-									</v-btn>
-								</v-card-actions>
-							</v-card>
-						</v-col>
-
-					</v-row>
-
-				</v-col>
+				</v-sheet>
 			</v-col>
-			<v-col cols="12" lg="12" class="px-6">
-				<h3>Offres du moment :</h3>
+		</v-row>
+
+		<v-row>
+			<v-col cols="12">
+				<h1 class="title white--text mt-6">Enchères en cours</h1>
 			</v-col>
-			<v-col v-for="index in 30" :key="index" >
-				<v-card class="mx-auto glasscard" max-width="344" outlined>
-					<v-list-item three-line>
-						<v-list-item-content>
-							<div class="text-overline mb-4">
-								OVERLINE
-							</div>
-							<v-list-item-title class="text-h5 mb-1">
-								Headline 5
-							</v-list-item-title>
-							<v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
-						</v-list-item-content>
 
-						<v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
-					</v-list-item>
-
-					<v-card-actions>
-						<v-btn outlined rounded text>
-							Button
-						</v-btn>
-					</v-card-actions>
-				</v-card>
+			<v-col cols="12" sm="4" md="3" v-for="item in data" :key="item.id">
+				<Product :product="item" :maxBids="2"></Product>
 			</v-col>
 		</v-row>
 	</div>
 </template>
 
-<script>
-
-import Header from "../components/graphics/Header";
-
-export default {
-	components: {
-		Header,
+<style scoped>
+	.categCard {
+		border-radius: 10px;
+		cursor: pointer;
 	}
-}
-</script>
-
-<style>
 
 </style>
+
+<script>
+	import Header from "../components/graphics/Header";
+	import ProductMin from "@/components/ProductMin";
+	import Product from "@/components/Product";
+
+	export default {
+		components: {
+			Header,
+			ProductMin,
+			Product
+		},
+
+		data() {
+			return {
+				user: {},
+
+				data: [],
+
+				categories: [
+					{
+						label: 'Classiques',
+						icon: 'fas fa-ghost',
+						color: '#55efc4',
+						textColor: '#00b894'
+					},
+					{
+						label: 'Jeux de table',
+						icon: 'fas fa-chess-king',
+						color: '#81ecec',
+						textColor: '#00cec9'
+					},
+					{
+						label: 'Plein air',
+						icon: 'fas fa-table-tennis',
+						color: '#48dbfb',
+						textColor: '#0abde3'
+					},
+					{
+						label: 'Jeux vidéos',
+						icon: 'fas fa-gamepad',
+						color: '#00d2d3',
+						textColor: '#01a3a4'
+					},
+					{
+						label: 'Jeux de rôles',
+						icon: 'fas fa-dungeon',
+						color: '#fab1a0',
+						textColor: '#e17055'
+					},
+					{
+						label: 'Enchères flash',
+						icon: 'fas fa-shipping-fast',
+						color: '#ff7675',
+						textColor: '#d63031'
+					}
+				],
+			}
+		},
+
+		created() {
+			this.$firebase.database().ref('users/' + this.$firebase.auth().currentUser.uid).on('value', (snapshot) => {
+				this.user = snapshot.val();
+			});
+
+			this.data = [];
+			this.$firebase.database().ref(`products/`).on("child_added", snap => {
+				this.data.push({
+					...this.$models.bid,
+					...snap.val(),
+					id: snap.getRef().key
+				});
+			});
+		}
+	}
+
+</script>
