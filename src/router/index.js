@@ -10,7 +10,10 @@ const routes = [
 	{
 		path: "/",
 		name: "Home",
-		component: () => import('@/views/Home.vue')
+		component: () => import('@/views/Home.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	},
 	{
 		path: "/login",
@@ -25,28 +28,43 @@ const routes = [
 	{
 		path: "/products",
 		name: "Products",
-		component: () => import('@/views/Products.vue')
+		component: () => import('@/views/Products.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	},
 	{
 		path: "/bid/:id",
 		name: "Product",
 		component: () => import('@/views/Product.vue'),
-		props: true
+		props: true,
+		meta: {
+			requiresAuth: true
+		}
 	},
 	{
 		path: "/profile",
 		name: "Profile",
-		component: () => import('@/views/Profile.vue')
+		component: () => import('@/views/Profile.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	},
 	{
 		path: "/account",
 		name: "Account",
-		component: () => import('@/views/Account.vue')
+		component: () => import('@/views/Account.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	},
 	{
 		path: "/bid/create",
 		name: "CreateBid",
-		component: () => import('@/views/CreateBid.vue')
+		component: () => import('@/views/CreateBid.vue'),
+		meta: {
+			requiresAuth: true
+		}
 	},
 ];
 
