@@ -1,76 +1,114 @@
 <template>
 	<div>
-		<Header title="Titre produit"></Header>
-        <v-row>
-            <v-col justify="center" align="center" cols="8">
-                <v-card class="glasscard pa-md-4 mx-lg-auto">
-                    <v-img
-                    lazy-src="https://picsum.photos/id/11/10/6"
-                    src="https://picsum.photos/id/11/500/300"
-                    ></v-img>
-                </v-card>
-                <v-card class="glasscard my-3">
-                    <v-card-text class="py-1">
-                        <h3 align="left">Temps restant</h3>
-                        <p align="left"> 7 jours 10 heures 50 minutes 24 secondes </p>
-                    </v-card-text>
-                </v-card>
-                 <v-card class="glasscard my-3">
-                    <v-card-text>
-                        <h3 align="left">Description</h3>
-                        <p align="left"> Commencer la description par une accroche vivante. Choisir un point de vue (une description vue par un personnage ou vue de l'extérieur). Ne pas chercher à tout décrire, mais choisir les éléments significatifs. Ordonner sa description (pour un portrait, passer du portrait physique au portrait mental par exemple). </p>
-                        <p align="left"> Commencer la description par une accroche vivante. Choisir un point de vue (une description vue par un personnage ou vue de l'extérieur).</p>
-                    </v-card-text>
-                </v-card>
+		<Header :title="data.name"></Header>
+		<v-row>
+			<v-col cols="8">
+				<v-card class="glasscard">
 
-            </v-col>
-            <v-col justify="center" align="center" cols="4">
-                <v-card class="glasscard">
-                    <v-card-text>
-                        Offre actuelle
-                        <v-card class="glasscard mx-lg-auto">
-                            <v-card-text>
-                               <p> 250€ </p>
-                            </v-card-text>
-                        </v-card>
+					<v-carousel v-model="model" hide-delimiter-background delimiter-icon="fas fa-minus" next-icon="fas fa-caret-right" prev-icon="fas fa-caret-left">
+						<v-carousel-item v-for="img in images" :key="img" :src="img">
+						</v-carousel-item>
+					</v-carousel>
 
-                        
-                        5 dernieres offres
-                        <v-card class="glasscard mx-lg-auto">
-                            <v-card-text>
-                                <p>Sarah 250€ </p>
-                                <p>Laure 250€ </p>
-                                <p>Jenny 250€ </p>
-                                <p>Stanou 250€ </p>
-                                <p>Irem 250€ </p>
-                            </v-card-text>
-                        </v-card>
-                    </v-card-text>
-                    <v-textarea
-                                label="Prix à proposer"
-                                auto-grow
-                                rows="1"
-                                class= "mx-3 py-0"
-                    ></v-textarea>
-                    <v-checkbox v-model="checkbox" :label="`Cacher mon pseudo`"
-                                class= "ml-4 py-0"
-                    ></v-checkbox>
-                    <v-btn
-                        color="primary"
-                        elevation="3"
-                        class="my-2">
-                    <div> Passer au paiement </div>
-                    </v-btn>
-                </v-card>
-                <v-card class="glasscard pd-10">
-                    <v-card-text class="mt-3">
-                       <h3>Acheter tout en sécurité</h3> 
-                       <p>✓Votre paiement sera conservé jusqu'à ce que le vendeur ait envoyé votre article ou qu'il l'ait préparé pour son retrait sur place. </p>
-                       <p>✓Toutes nos ventes sont soumises à un contrôle par notaire.</p>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
+				</v-card>
+
+				<v-card class="glasscard my-3">
+					<v-card-text>
+						<h3>Description</h3>
+						<p>
+							{{ data.shortDesc }}
+						</p>
+						<p>
+							{{ data.longDesc }}
+						</p>
+					</v-card-text>
+				</v-card>
+
+			</v-col>
+			<v-col cols="4">
+				<v-card class="glasscard">
+					<v-card-title>
+						Informations en direct
+					</v-card-title>
+					<v-card-text>
+
+						<v-row class="overline" style="font-size: 1.2em!important;">
+							<v-col cols="8" class="py-0">
+								<span class="caption" style="font-size: 1em!important;">Prix actuel</span>
+							</v-col>
+							<v-col cols="4" align="right" class="py-0">
+								{{ Number(data.prices.actual).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
+							</v-col>
+
+							<v-col cols="8" class="py-0">
+								<span class="caption" style="font-size: 1em!important;">Prix de départ</span>
+							</v-col>
+							<v-col cols="4" align="right" class="py-0">
+								{{ Number(data.prices.start).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€
+							</v-col>
+
+							<v-col cols="8" class="py-0">
+								<span class="caption" style="font-size: 1em!important;">Temps restant</span>
+							</v-col>
+							<v-col cols="4" align="right" class="py-0">
+								{{ $moment().to(data.timeOptions.bidStopTime, true) }}
+							</v-col>
+						</v-row>
+
+					</v-card-text>
+
+					<v-card-title class="pb-0">
+						Dernières offres
+					</v-card-title>
+					<v-list style="background-color: rgba( 255, 255, 255, 0 )" class="pt-0">
+						<v-list-item-group disabled>
+							<v-list-item v-for="(item, i) in 5" :key="i">
+								<v-list-item-icon>
+									<v-icon color="secondary">far fa-money-bill-alt</v-icon>
+								</v-list-item-icon>
+
+								<v-list-item-content>
+									<v-list-item-title>{{ randomUsers[Math.floor(Math.random() * randomUsers.length)] }}</v-list-item-title>
+									<v-list-item-subtitle>{{ Math.round(Number(data.prices.actual) + (Math.random() * 5)).toLocaleString(undefined, {minimumFractionDigits: 2}) }}€</v-list-item-subtitle>
+								</v-list-item-content>
+							</v-list-item>
+						</v-list-item-group>
+					</v-list>
+
+					<v-divder></v-divder>
+
+					<v-card-title>
+						Vous voulez enchérir ?
+					</v-card-title>
+					<v-row>
+						<v-col cols="12" sm="6">
+							<v-text-field :label="`Proposez un prix (> ${data.prices.actual}€)`" :min="Number(data.prices.actual)" suffix="€" type="number" auto-grow rows="1" class="mx-3 py-0"></v-text-field>
+						</v-col>
+						<v-col cols="12" sm="6" class="pt-1">
+							<v-checkbox v-model="anonymCheckbox" label="Je préfère être anonyme" class="ml-4 py-0"></v-checkbox>
+						</v-col>
+
+						<v-col cols="12" class="px-12 pt-0">
+							<v-btn color="primary" block>
+								Passer au paiement
+							</v-btn>
+						</v-col>
+					</v-row>
+
+				</v-card>
+
+				<v-card class="glasscard mt-6">
+					<v-card-title>
+						Achetez en tout sécurité
+					</v-card-title>
+
+					<v-card-text>
+						<p>✅ Votre paiement sera conservé jusqu'à ce que le vendeur ait envoyé votre article ou qu'il l'ait préparé pour son retrait sur place. </p>
+						<p>✅ Toutes nos ventes sont soumises à un contrôle par notaire.</p>
+					</v-card-text>
+				</v-card>
+			</v-col>
+		</v-row>
 	</div>
 </template>
 
@@ -79,23 +117,37 @@
 </style>
 
 <script>
-import Header from "@/components/graphics/Header";
+	import Header from "@/components/graphics/Header";
 
-export default {
-	name: "Product",
+	export default {
+		name: "Product",
 
-	components: {
-		Header
-	},
+		props: {
+			id: {
+				type: String
+			}
+		},
 
-	data() {
-		return {
-			
+		components: {
+			Header
+		},
+
+		data() {
+			return {
+				data: this.$models.bid,
+				images: [],
+				randomUsers: ['Sarahlpb', 'psyroman212', 'stan1712', 'Kikyris', 'Sacrigmatik', 'Pierre D.', 'Over_404', '775pl', 'Bggs', 'indes33', 'Irem', 'Laure', 'Jennie K.'],
+				anonymCheckbox: false
+			}
+		},
+
+		created() {
+			this.$firebase.database().ref('products/' + this.id).on('value', (snapshot) => {
+				this.data = snapshot.val();
+
+				this.images = [this.data.img.main, this.data.img.secondary];
+			});
 		}
-	},
-
-	created() {
-
 	}
-}
+
 </script>
