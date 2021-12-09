@@ -232,9 +232,7 @@
 			async logout() {
 				try {
 					await this.$firebase.auth().signOut();
-					this.$router.replace({
-						path: "Login"
-					});
+					this.$router.push('/login');
 				} catch (err) {
 					console.log(err);
 				}	
