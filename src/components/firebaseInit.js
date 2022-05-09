@@ -12,4 +12,4 @@ var config = {
 };
 firebase.initializeApp(config);
 
-export default firebase.database();
+export default firebase.firestore();
