@@ -288,7 +288,6 @@
 					},
 					() => {
 						uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-							console.log(downloadURL)
 							this.bid.img[importType] = downloadURL;
 
 							this.imagesLoading = false;
@@ -296,12 +295,6 @@
 					}
 				);
 			}
-		},
-
-		created() {
-			this.$firebase.database().ref('users/' + this.$firebase.auth().currentUser.uid).on('value', (snapshot) => {
-				this.user = snapshot.val();
-			});
 		}
 	}
 

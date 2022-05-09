@@ -80,13 +80,6 @@ export default {
 			try {
 				await this.$firebase.auth().signInWithEmailAndPassword(this.email, this.password);
 
-				this.$db.ref(`users/${this.$firebase.auth().currentUser.uid}`).set({
-					displayName: this.$firebase.auth().currentUser.displayName,
-					email: this.$firebase.auth().currentUser.email,
-					phoneNumber: this.$firebase.auth().currentUser.phoneNumber,
-					photoURL: this.$firebase.auth().currentUser.photoURL
-				});
-
 				this.$router.replace({
 					path: "/"
 				});

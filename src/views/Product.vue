@@ -5,7 +5,7 @@
 			<v-col cols="8">
 				<v-card class="glasscard">
 
-					<v-carousel v-model="model" hide-delimiter-background delimiter-icon="fas fa-minus" next-icon="fas fa-caret-right" prev-icon="fas fa-caret-left">
+					<v-carousel hide-delimiter-background delimiter-icon="fas fa-minus" next-icon="fas fa-caret-right" prev-icon="fas fa-caret-left">
 						<v-carousel-item v-for="img in images" :key="img" :src="img">
 						</v-carousel-item>
 					</v-carousel>

@@ -79,7 +79,13 @@ name: "Account",
 
 	data() {
 		return {
-
+			Name: "",
+			FullName: "",
+			EmailAdress: "",
+			PhoneNumber: "",
+			Adress: "",
+			DateBirth: "",
+			Gender: "",
 		}
 	},
 
