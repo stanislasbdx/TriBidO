@@ -60,11 +60,14 @@ export default {
 	},
 
 	created() {
-		this.$firebase.database().ref(`products/`).on("child_added", snap => {
-			this.data.push({
-				...this.$models.bid,
-				...snap.val(),
-				id: snap.getRef().key
+		this.data = [];
+		this.$db.collection("products").onSnapshot((res) => {
+			res.forEach((doc) => {
+				this.data.push({
+					...this.$models.bid,
+					...doc.data(),
+					id: doc.id
+				});
 			});
 		});
 	}

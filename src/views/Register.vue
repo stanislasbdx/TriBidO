@@ -89,7 +89,7 @@
 							displayName: this.username
 						});
 
-						this.$db.ref(`users/${credentials.user.uid}`).set({
+						this.$db.collection("users").doc(credentials.user.uid).set({
 							displayName: this.username,
 							email: this.email,
 							creationDate: new Date().getTime()

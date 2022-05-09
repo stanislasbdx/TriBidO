@@ -81,16 +81,21 @@
 		},
 
 		created() {
-			this.$firebase.database().ref('users/' + this.$firebase.auth().currentUser.uid).on('value', (snapshot) => {
-				this.user = snapshot.val();
-			});
+			this.$db.collection("users").doc(this.$firebase.auth().currentUser.uid).get().then((doc) => {
+				this.user = {
+					...doc.data(),
+					id: doc.id
+				};
 
-			this.products = [];
-			this.$firebase.database().ref(`products/`).on("child_added", snap => {
-				if(snap.val().creator == this.$firebase.auth().currentUser.uid) this.products.push({
-					...this.$models.bid,
-					...snap.val(),
-					id: snap.getRef().key
+				this.products = [];
+				this.$db.collection("products").where("creator", "==", this.user.id).onSnapshot((res) => {
+					res.forEach((doc) => {
+						this.products.push({
+							...this.$models.bid,
+							...doc.data(),
+							id: doc.id
+						});
+					});
 				});
 			});
 		}

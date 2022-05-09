@@ -142,8 +142,8 @@
 		},
 
 		created() {
-			this.$firebase.database().ref('products/' + this.id).on('value', (snapshot) => {
-				this.data = snapshot.val();
+			this.$db.collection("products").doc(this.id).get().then((res) => {
+				this.data = res.data();
 
 				this.images = [this.data.img.main, this.data.img.secondary];
 			});

@@ -113,16 +113,18 @@
 		},
 
 		created() {
-			this.$firebase.database().ref('users/' + this.$firebase.auth().currentUser.uid).on('value', (snapshot) => {
-				this.user = snapshot.val();
+			this.$db.collection("users").doc(this.$firebase.auth().currentUser.uid).get().then((doc) => {
+				this.user = doc.data();
 			});
 
 			this.data = [];
-			this.$firebase.database().ref(`products/`).on("child_added", snap => {
-				this.data.push({
-					...this.$models.bid,
-					...snap.val(),
-					id: snap.getRef().key
+			this.$db.collection("products").onSnapshot((res) => {
+				res.forEach((doc) => {
+					this.data.push({
+						...this.$models.bid,
+						...doc.data(),
+						id: doc.id
+					});
 				});
 			});
 		}

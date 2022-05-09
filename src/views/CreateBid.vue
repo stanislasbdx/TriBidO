@@ -248,10 +248,11 @@
 				this.bid.timeOptions.bidStartTime = new Date().getTime();
 				this.bid.timeOptions.createdAt = new Date().getTime();
 
-				this.$db.ref(`products/`).push({
-					...this.bid
+				this.$db.collection("products").add({
+					...this.bid,
+					creator: this.$firebase.auth().currentUser.uid
 				}).then(res => {
-					this.$router.push(`${res.getRef().key}`);
+					this.$router.push(`${res.id}`);
 				});
 			},
 
