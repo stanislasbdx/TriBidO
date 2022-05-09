@@ -117,16 +117,11 @@
 
 	.scrollbar {
 		height: 100%;
-		width: 12.5vw;
-		overflow-y: hidden;
-		overflow-x: hidden;
-	}
-
-	.scrollbar:hover {
-		height: 100%;
-		width: 12.5vw;
+		width: 100%;
 		overflow-y: scroll;
 		overflow-x: hidden;
+
+		scrollbar-width: none;
 	}
 
 	/* Sidebar */
